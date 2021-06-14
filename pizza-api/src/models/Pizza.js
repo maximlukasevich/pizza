@@ -1,31 +1,48 @@
-import { Schema, model } from 'mongoose';
+const mongoose = require('mongoose');
+const slug = require('mongoose-slug-generator');
 
-const PizzaSchema = new Schema({
-    image: {
-        type: String,
-        require: true
-    },
-    name: {
-        type: String,
-        require: true
-    },
-    price: {
-        type: String,
-        require: true
+mongoose.plugin(slug);
+
+const PizzaSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    require: true
+  },
+  slug: {
+    type: String,
+    slug: 'name',
+    unique: true
+  },
+  price: {
+    type: String,
+    require: true
+  },
+  sizes: [{
+    inStock: {
+      type: Boolean,
+      default: false
     },
     size: {
-        type: String, 
-        require: true,
+      type: Number,
+      require: true
     },
-    ingredients: [{
-        type: String
-    }],
-    inStock: {
-        type: Boolean,
-        require: true,
-        default: false,
+    price: {
+      type: String,
+      require: true
     }
+  }],
+  ingredients: [{
+    type: String
+  }],
+  description: {
+    type: String,
+    required: false,
+    default: null
+  },
+  inStock: {
+    type: Boolean,
+    default: false,
+  }
 });
 
-const Pizza = new model('Pizza', PizzaSchema);
-export { Pizza };
+module.exports = new mongoose.model('Pizza', PizzaSchema);
