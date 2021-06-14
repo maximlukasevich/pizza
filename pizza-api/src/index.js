@@ -1,19 +1,24 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import { router } from './settings/routes.js'
-import {} from 'dotenv/config';
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const routes = require('./settings/routes');
 
 const app = express();
 
-app.use('/api', router)
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/api', routes);
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
 })
   .then(() => {
     console.log('\n pizza-api \n');
     console.log('- Success connect to mongoDB');
-    app.listen(process.env.PORT, () => console.log(`- Server started at port:${process.env.PORT}`))
+    app.listen(process.env.PORT, () => console.log(`- Server started at port:${process.env.PORT}`));
   })
-  .catch((e) => console.error(e))
+  .catch((e) => console.error(e));
