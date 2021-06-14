@@ -1,48 +1,61 @@
-import { Schema, model } from 'mongoose';
+const { Schema, model } = require('mongoose');
 
 const orderStatus = ['new', 'performed', 'done', 'canceled']
 
 const OrderSchema = new Schema({
-    customer: {
-        firstName: {
-            type: String,
-            require: true
-        },
-        lastName: {
-            type: String, 
-            require: true
-        },
+  customer: {
+    firstName: {
+      type: String,
+      require: true
     },
-    address: {
-        type: String,
-        require: trune
+    lastName: {
+      type: String,
+      require: true
     },
-    orderList: [{
-        type: Schema.Types.ObjectId, 
-        ref: 'Pizza',
-        require: true
-    }],
-    orderStatus: {
-        status: {
-            type: String,
-            enums: orderStatus,
-            require: true,
-            default: 'new'
-        },
-        date: {
-            type: Date, 
-            require: true,
-            default: Date.now()
-        }
+  },
+  address: {
+    type: String,
+    require: true
+  },
+  phone: {
+    type: String,
+    required: true
+  },
+  orderList: [{
+    pizza: {
+      type: Schema.Types.ObjectId,
+      ref: 'Pizza',
+      require: true
     },
-    description: {
-        type: String,
-        require: false,
-        default: null
+    size: {
+      type: Number,
+      require: true
     }
+  }],
+  price: {
+    type: Number,
+    required: true
+  },
+  orderStatus: {
+    status: {
+      type: String,
+      enums: orderStatus,
+      require: true,
+      default: 'new'
+    },
+    date: {
+      type: Date,
+      require: true,
+      default: Date.now()
+    }
+  },
+  description: {
+    type: String,
+    require: false,
+    default: null
+  }
 });
 
-const Order = new model('Order', OrderSchema);
-export { Order };
+module.exports = new model('Order', OrderSchema);
 
 
