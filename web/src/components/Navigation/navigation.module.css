@@ -1,0 +1,18 @@
+.nav {
+  padding: 15px 15px;
+  border-radius: 10px 10px 0 0;
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*border-bottom: 1px solid #E12C35;*/
+}
+
+.hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  background: linear-gradient(0.25turn, #E12C35, #FDB452, #7d0408);
+  /*background-color: #E12C35;*/
+  margin: 20px 15px 30px 15px;
+}
