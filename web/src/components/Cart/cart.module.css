@@ -1,0 +1,49 @@
+.cartWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart {
+    background-color: #E12C35;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px;
+    color: #FFFFFF;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.cart:hover {
+    background-color: #7d0408;
+    cursor: pointer;
+}
+
+.price {
+    padding: 10px 15px;
+}
+
+.icon {
+    padding: 0 5px;
+    font-size: 20px;
+}
+
+.cardAndIcon {
+    padding: 10px 15px;
+    border-right: 1px solid #FFFFFF;
+}
+
+.count  {
+    text-align: center;
+    color: #E12C35;
+    font-size: 14px;
+    padding: 5px;
+}
+
+@media (max-width: 570px) {
+    .icon {
+        font-size: 16px;
+    }
+    .cart {
+        font-size: 12px;
+    }
+}
