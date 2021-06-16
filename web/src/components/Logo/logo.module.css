@@ -1,0 +1,30 @@
+.logo {
+    display: flex;
+    justify-content: left;
+}
+
+.logoImage {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.logoText {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logoText p {
+    color: #E12C35;
+}
+
+@media (max-width: 570px) {
+    .logoText {
+        font-size: 10px;
+    }
+    .logoImage {
+        max-width: 50px;
+        max-height: 50px;
+    }
+}
