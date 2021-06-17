@@ -4,6 +4,10 @@ const slug = require('mongoose-slug-generator');
 mongoose.plugin(slug);
 
 const PizzaSchema = new mongoose.Schema({
+  image: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     require: true
