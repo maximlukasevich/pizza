@@ -1,0 +1,15 @@
+.pizza {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.title {
+    color: #E12C35;
+    font-weight: normal;
+}
+
+.block {
+    margin-top: 50px;
+}
