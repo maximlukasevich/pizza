@@ -22,17 +22,6 @@
     color: #FFFFFF;
 }
 
-.active {
-    background: #E12C35;
-    color: #FFFFFF;
-}
-
-.disabled {
-    background-color: #7d0408 !important;
-    border-color: #7d0408;
-    color: #FFFFFF;
-}
-
 .input {
     position: absolute;
     opacity: 0;
