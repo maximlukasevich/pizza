@@ -1,0 +1,84 @@
+.sizes {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.counterWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.counter {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    font-size: 14px;
+    padding: 5px 7px;
+    background-color: #FFFFFF;
+    border: 1px solid #E12C35;
+    border-radius: 7px 0 0 7px;
+    transition: 0.3s;
+}
+
+.button:nth-child(3) {
+    border-radius: 0 7px 7px 0;
+}
+
+.button:hover {
+    color: #FFFFFF;
+    background-color: #E12C35;
+    border-color: #E12C35;
+    cursor: pointer;
+}
+
+.button:active {
+    font-size: 2px;
+}
+
+.lastButton {
+    font-size: 14px;
+    /*color: #FFFFFF;*/
+    padding: 5px 7px;
+    background-color: #FFFFFF;
+    border-radius: 0 7px 7px 0;
+    border: 1px solid #E12C35;
+    transition: 0.3s;
+}
+
+.lastButton:hover {
+    color: #FFFFFF;
+    background-color: #E12C35;
+    border-color: #E12C35;
+    cursor: pointer;
+}
+
+.lastButton:active {
+    font-size: 2px;
+}
+
+.input {
+    text-align: center;
+    border-top: 1px solid #E12C35;
+    border-bottom: 1px solid #E12C35;
+    border-left: none;
+    border-right: none;
+    max-width: 30px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.price {
+    font-size: 16px;
+    margin: 5px;
+    overflow-wrap: break-word;
+}
