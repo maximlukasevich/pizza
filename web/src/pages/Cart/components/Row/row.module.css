@@ -1,0 +1,44 @@
+.tr:nth-child(odd) {
+    background-color: #E12C3510;
+}
+
+.tr td {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.image {
+    max-height: 100px;
+    max-width: 100px;
+    border-radius: 7px;
+}
+
+.pizza {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pizzaName {
+    padding-left: 15px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.tdIcon:hover .icon {
+    color: #7d0408;
+    font-size: 34px;
+}
+
+.icon {
+    font-size: 26px;
+    color: #E12C35;
+    transition: 0.3s;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

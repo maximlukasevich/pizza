@@ -1,0 +1,80 @@
+.cart {
+    padding: 30px 0;
+}
+.table {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.tableTitle {
+    text-align: left;
+    font-weight: normal;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    background-color: #E12C35;
+}
+
+.tableTitle:first-child {
+    border-radius: 7px 0 0 0;
+}
+
+.tableTitle:last-child {
+    border-radius: 0 7px 0 0;
+}
+
+.order {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderForm {
+    width: 40%;
+}
+
+.accept {
+    padding: 0 30px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.acceptHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.acceptDiv {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.price {
+    white-space: nowrap;
+    font-size: 18px;
+    flex-basis: 200px;
+}
+
+.priceSpan {
+    color: #E12C35;
+    font-size: 22px;
+}
+
+.button {
+    padding: 10px 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 7px;
+    background-color: #E12C35;
+    color: #FFFFFF;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #7d0408;
+}
