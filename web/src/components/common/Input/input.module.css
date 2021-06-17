@@ -1,0 +1,30 @@
+.inputDiv {
+    margin: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+.input {
+    width: 100%;
+    transition: 0.3s;
+    font-size: 16px;
+    padding: 10px 15px;
+    color: #E12C35;
+    border: none;
+    border-bottom: 2px solid #E12C35;
+}
+
+.input:focus {
+    text-decoration: underline;
+    outline: #E12C35;
+    border-bottom: 2px solid #7d0408;
+}
