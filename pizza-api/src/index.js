@@ -6,8 +6,8 @@ const routes = require('./settings/routes');
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '16mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: '16mb', extended: true }));
 app.use('/api', routes);
 
 mongoose.connect(process.env.MONGO_URI, {
