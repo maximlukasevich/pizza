@@ -1,0 +1,19 @@
+.tr:nth-child(odd) {
+    background-color: #E12C3510;
+}
+
+.tr td {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.img {
+    border-radius: 7px;
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+}

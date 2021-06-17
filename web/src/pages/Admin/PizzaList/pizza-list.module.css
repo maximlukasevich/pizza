@@ -1,0 +1,20 @@
+.table {
+    margin: 30px 0;
+    width: 100%;
+}
+
+.tableTitle {
+    text-align: left;
+    font-weight: normal;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    background-color: #E12C35;
+}
+
+.tableTitle:first-child {
+    border-radius: 7px 0 0 0;
+}
+
+.tableTitle:last-child {
+    border-radius: 0 7px 0 0;
+}
