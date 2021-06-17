@@ -1,9 +1,9 @@
 import React from 'react';
 
-import styles from './cart.module.css';
+import styles from './cart-button.module.css';
 import { ShoppingOutlined } from '@ant-design/icons';
 
-const Cart = () => {
+const CartButton = () => {
 
   return (
     <div className={styles.cartWrapper}>
@@ -23,4 +23,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartButton;

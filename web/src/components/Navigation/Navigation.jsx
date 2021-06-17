@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './navigation.module.css';
-import Cart from '../Cart/Cart';
+import CartButton from '../CartButton/CartButton';
 import Logo from "../Logo/Logo";
 
 const Navigation = () => {
@@ -9,7 +9,7 @@ const Navigation = () => {
     <div>
       <nav className={styles.nav}>
         <Logo />
-        <Cart />
+        <CartButton />
       </nav>
       <hr className={styles.hr}/>
     </div>
