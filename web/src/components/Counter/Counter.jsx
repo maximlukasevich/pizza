@@ -5,13 +5,14 @@ import Radio from '../common/Radio/Radio';
 const Counter = (props) => {
 
   const countHandler = (e) => {
-    if (e.target.value >= 1) {
-      props.setCount(Number(e.target.value));
-      props.onChange(e.target.value);
-      props.setFullPrice(props.fullPrice + Number(props.pizzaPrice) * Number(e.target.value));
-    } else {
-      props.setCount(1);
-      props.onChange(1);
+    if (Number(e.target.value)) {
+      if (e.target.value >= 1) {
+        props.setCount(Number(e.target.value));
+        props.onChange(e.target.value);
+      } else {
+        props.setCount(1);
+        props.onChange(1);
+      }
     }
   }
 
