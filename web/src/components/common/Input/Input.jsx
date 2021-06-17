@@ -5,7 +5,7 @@ const Input = (props) => {
   return (
     <div className={styles.inputDiv}>
       <label className={styles.label}>
-        {props.label}:
+        {props.label}
       </label>
       <input
         className={styles.input}
