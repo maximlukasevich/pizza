@@ -1,0 +1,45 @@
+.label {
+    text-align: center;
+    padding: 5px 10px;
+    width: 100%;
+    border-top: 1px solid #E12C35;
+    border-bottom: 1px solid #E12C35;
+    border-right: 1px solid #E12C35;
+    transition: 0.3s;
+}
+
+.label:nth-child(2) {
+    border-radius: 7px 0 0 7px;
+    border-left: 1px solid #E12C35;
+}
+
+.label:last-child {
+    border-radius: 0 7px 7px 0;
+}
+
+.label:hover {
+    background: #E12C35;
+    color: #FFFFFF;
+}
+
+.active {
+    background: #E12C35;
+    color: #FFFFFF;
+}
+
+.disabled {
+    background-color: #7d0408 !important;
+    border-color: #7d0408;
+    color: #FFFFFF;
+}
+
+.input {
+    position: absolute;
+    opacity: 0;
+    display: none;
+}
+
+.input:checked + label{
+    background: #E12C35;
+    color: #FFFFFF;
+}
