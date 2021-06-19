@@ -13,7 +13,6 @@ const getAllPizza = async (req, res) => {
 const getPizza = async (req, res) => {
   try {
     const {slug} = req.params;
-
     return res.status(200).json(pizzaService.getPizza(slug)) || res.status(404).send('Not Found');
   } catch (e) {
     console.error(e);
@@ -23,10 +22,12 @@ const getPizza = async (req, res) => {
 
 const createPizza = async (req, res) => {
   try {
-    const {pizza} = req.body;
+    let {pizza} = req.body;
+    const ingredients = pizza.ingredients.replace(/, /g, ',');
+    pizza.ingredients = ingredients.split(',');
     const created = await pizzaService.createPizza(pizza);
     if (!created) {
-      return res.status(400).json({message: 'Помилка створення'});
+      return res.json({message: 'Помилка створення'});
     }
     return res.status(200).json({message: 'Піцу додано'});
   } catch (e) {
@@ -41,7 +42,7 @@ const updatePizza = async (req, res) => {
     const {pizza} = req.body;
     const updated = await pizzaService.updatePizza(slug, pizza);
     if (!updated) {
-      return res.status(400).json({message: 'Помилка при оновлені'});
+      return res.json({message: 'Помилка при оновлені'});
     }
     return res.status(200).json({message: 'Піцу оновлено'});
   } catch (e) {

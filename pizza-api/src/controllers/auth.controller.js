@@ -12,10 +12,10 @@ const login = async (req, res) => {
     const {login, password} = req.body;
     const admin = await Admin.findOne({login});
     if (!admin) {
-      return res.status(401).json({message: 'Користувача не знайдено'});
+      return res.json({message: 'Користувача не знайдено'});
     }
     if (!bcrypt.compareSync(password, admin.password)) {
-      return res.status(401).json({message: 'Паролі не співпадають'});
+      return res.json({message: 'Паролі не співпадають'});
     }
     const token = generateAccessToken({adminId: admin._id});
     return res.status(200).json({
@@ -32,7 +32,7 @@ const auth = async (req, res) => {
   try {
     const admin = await Admin.findById(req.adminId);
     if (!admin) {
-      return res.status(401).json({message: 'Помилка авторизації'});
+      return res.json({message: 'Помилка авторизації'});
     }
     const token = generateAccessToken({adminId: admin._id});
     return res.status(200).json({
