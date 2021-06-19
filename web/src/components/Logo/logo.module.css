@@ -15,6 +15,10 @@
     justify-content: center;
 }
 
+.logoText h1 {
+    color: #000000;
+}
+
 .logoText p {
     color: #E12C35;
 }

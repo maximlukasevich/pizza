@@ -1,28 +1,33 @@
 import React from 'react';
 import styles from './admin-pizza-row.module.css';
 import Button from '../../../../../components/common/Button/Button';
+import {useDispatch} from "react-redux";
+import {deletePizza} from "../../../../../store/Pizza/action";
 
 const AdminPizzaRow = (props) => {
+
+  const dispatch = useDispatch();
+
   return (
     <tr className={styles.tr}>
       <td>
-        <img className={styles.img} src="https://tiptop-pizza.com.ua/image/cache/catalog/pizza/test1-800x800.jpg" alt=""/>
+        <img className={styles.img} src={props.image} alt={props.name}/>
       </td>
       <td>
-        Без назви..
+        {props.name}
       </td>
       <td>
         <ul>
-          <li>Розмір: 60, Ціна: 120 грн., Показується на сайті: Так</li>
-          <li>Розмір: 60, Ціна: 120 грн., Показується на сайті: Так</li>
-          <li>Розмір: 60, Ціна: 120 грн., Показується на сайті: Так</li>
+          {props.sizes.map((item, i) =>
+            <li>Розмір: {item.size}, Ціна: {item.price} грн., Показується на сайті: {item.inStock ? 'Так' : 'Ні'}</li>
+          )}
         </ul>
       </td>
       <td>
-        13154123
+        -
       </td>
       <td className={styles.actions}>
-        <Button title={'Видалити'} />
+        <Button onClick={e => dispatch(deletePizza(props.slug))} title={'Видалити'}/>
         <Button title={'Редагувати'} />
       </td>
     </tr>

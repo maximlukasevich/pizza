@@ -12,10 +12,13 @@ const Radio = (props) => {
         className={styles.input}
         name={props.name}
         type="radio"
+        onChange={e => props.setSize(props.label)}
         value={props.value}
       />
-    <label className={styles.label} htmlFor={inputId}>
-      {props.label}
+    <label
+      className={styles.label}
+      htmlFor={inputId} >
+      {props.label} см
     </label>
   </>);
 };

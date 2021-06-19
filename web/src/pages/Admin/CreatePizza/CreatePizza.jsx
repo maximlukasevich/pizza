@@ -1,38 +1,49 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import {Convert} from 'mongo-image-converter';
+import {useDispatch} from 'react-redux';
+import { createPizza } from '../../../store/Pizza/action';
+
 import styles from './create-pizza.module.css';
 import Input from '../../../components/common/Input/Input';
 import {PlusOutlined} from '@ant-design/icons';
-import {wait} from "@testing-library/react";
-import TextArea from "../../../components/common/TextArea/TextArea";
-import Radio from "../../../components/common/Radio/Radio";
-import CheckBox from "../../../components/common/CheckBox/CheckBox";
-import Button from "../../../components/common/Button/Button";
+import TextArea from '../../../components/common/TextArea/TextArea';
+import CheckBox from '../../../components/common/CheckBox/CheckBox';
+import Button from '../../../components/common/Button/Button';
+
 
 const CreatePizza = () => {
 
-  const [clickCount, setClickCount] = useState(0);
+  const [image, setImage] = useState('');
+  const [name, setName] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [description, setDescription] = useState('');
+  const [inStock, setInStock] = useState(false);
+  const [sizes, setSizes] = useState({sizes: []});
 
+  const [size, setSize] = useState('');
+  const [price, setPrice] = useState('');
+  const [sizeStock, setSizeStock] = useState(false);
 
-  const addFieldsHandler = () => {
-    setClickCount(Number(clickCount) + 1);
-  }
+  const dispatch = useDispatch();
 
-  const renderKeyValue = () => {
-    let divs = [];
-    for (let i = 0; i < clickCount; i++) {
-      divs.push(
-        <div className={styles.sizesWrapper}>
-          <div className={styles.sizes}>
-            <Input placeholder={'Розмір'} />
-            :
-            <Input placeholder={'Ціна'}/>
-          </div>
-        <CheckBox label={'В наявності?'} />
-        </div>
-      );
+  const convertImage = async (e) => {
+    try {
+      const convertedImage = await Convert(e.target.files[0]);
+      if (convertedImage) {
+        setImage(convertedImage);
+      } else {
+        alert('Вибраний файл не відповідає формату .png або .jpeg');
+      }
+    } catch (e) {
+      console.error(e.message);
     }
-    return divs;
   }
+
+  const addVariantToSizes = () => {
+  setSizes({ sizes: [...sizes.sizes, { size, price, inStock: sizeStock }]});
+  setSize('');
+  setPrice('');
+}
 
   return (
 
@@ -42,14 +53,25 @@ const CreatePizza = () => {
 
         <h3>Додати піцу</h3>
 
-        <Input type={'file'} label={'Картинка (.png / .jpeg) до 16 mb'} />
-        <Input placeholder={'Назва'} label={'Назва'} />
-        <TextArea placeholder={'Інгредієнти (через кому)'} label={'Інгредієнти'} />
-        <TextArea placeholder={'Опис'} label={'Опис'} />
+        <Input type={'file'} label={'Картинка (.png / .jpeg) до 16 mb'} onLoad={convertImage} />
+        <Input placeholder={'Назва'} label={'Назва'} value={name} setValue={setName}/>
+        <TextArea
+          placeholder={'Інгредієнти (через кому)'}
+          label={'Інгредієнти'}
+          value={ingredients}
+          setValue={setIngredients} />
+        <TextArea
+          placeholder={'Опис'}
+          label={'Опис'}
+          value={description}
+          setValue={setDescription} />
 
-        <CheckBox label={'Показувати на сайті?'} />
+        <CheckBox label={'Показувати на сайті?'} value={inStock} setValue={setInStock} />
 
-        <Button title={'Додати'}/>
+        <Button title={'Додати'} onClick={e => dispatch(createPizza(
+          image, name, ingredients,
+          description, inStock, sizes.sizes
+        ))} />
 
       </div>
 
@@ -57,19 +79,42 @@ const CreatePizza = () => {
         <div className={styles.text}>
           <p>Варіації</p>
           <p className={styles.p}
-             onClick={e => addFieldsHandler()}>Додати варіант  <PlusOutlined /></p>
+             onClick={e => addVariantToSizes()}>Зберегти і додати новий варіант  <PlusOutlined /></p>
         </div>
 
         <div className={styles.sizesWrapper}>
           <div className={styles.sizes}>
-            <Input placeholder={'Розмір'} />
+            <Input
+              placeholder={'Розмір'}
+              value={size}
+              setValue={setSize}/>
             :
-            <Input placeholder={'Ціна'}/>
+            <Input
+              placeholder={'Ціна'}
+              value={price}
+              setValue={setPrice} />
           </div>
-          <CheckBox label={'В наявності?'} />
+          <CheckBox
+            label={'В наявності?'}
+            value={sizeStock}
+            setValue={setSizeStock}
+          />
         </div>
 
-        {renderKeyValue()}
+        <table className={styles.table} >
+          <tr>
+            <th className={styles.tableTitle}>Розмір</th>
+            <th className={styles.tableTitle}>Ціна</th>
+            <th className={styles.tableTitle}>В наявності</th>
+          </tr>
+        {sizes.sizes.map((item, i) =>
+          <tr className={styles.tr}>
+            <td>{item.size}</td>
+            <td>{item.price}</td>
+            <td>{item.inStock ? 'Так' : 'Ні'}</td>
+          </tr>
+        )}
+        </table>
 
       </div>
 

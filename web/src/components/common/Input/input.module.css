@@ -1,3 +1,8 @@
+.error {
+    font-size: 14px;
+    color: #E12C35;
+}
+
 .inputDiv {
     margin: 10px 15px;
     display: flex;
@@ -23,8 +28,7 @@
 }
 
 .input:focus {
-    text-decoration: underline;
-    outline: #E12C35;
+    outline: none;
     border-bottom: 2px solid #7d0408;
 }
 

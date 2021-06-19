@@ -78,3 +78,15 @@
 .button:hover {
     background-color: #7d0408;
 }
+
+.empty {
+    margin: 50px 0;
+    font-size: 46px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    color: #E12C35;
+}

@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './counter.module.css';
-import Radio from '../common/Radio/Radio';
 
 const Counter = (props) => {
 
@@ -8,7 +7,8 @@ const Counter = (props) => {
     if (Number(e.target.value)) {
       if (e.target.value >= 1) {
         props.setCount(Number(e.target.value));
-        props.onChange(e.target.value);
+        props.onChange(Number(e.target.value));
+
       } else {
         props.setCount(1);
         props.onChange(1);
@@ -17,8 +17,8 @@ const Counter = (props) => {
   }
 
   const addOne = (prevState) => {
-    props.setCount(prevState + 1);
-    props.onChange(prevState + 1);
+    props.setCount(Number(prevState) + 1);
+    props.onChange(Number(prevState) + 1);
   }
 
   const dellOne = (prevState) => {
@@ -32,7 +32,7 @@ const Counter = (props) => {
     <div className={props.className}>
       <div className={styles.counterWrapper}>
         <div className={styles.counter}>
-          <button className={styles.button} onClick={e => dellOne(props.count)}>
+          <button className={styles.button} onClick={() => dellOne(props.count)}>
             -
           </button>
           <input
@@ -40,7 +40,7 @@ const Counter = (props) => {
             type="text"
             value={props.count}
             onChange={e => countHandler(e)}/>
-          <button className={styles.lastButton} onClick={e => addOne(props.count)}>
+          <button className={styles.lastButton} onClick={() => addOne(props.count)}>
             +
           </button>
         </div>

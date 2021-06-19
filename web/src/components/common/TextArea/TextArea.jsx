@@ -10,6 +10,7 @@ const TextArea = (props) => {
       <textarea
         placeholder={props.placeholder}
         value={props.value}
+        onChange={e => props.setValue(e.target.value)}
         className={styles.input}
         cols="30"
         rows="3" />

@@ -15,7 +15,7 @@
 
 .pizza {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .pizzaName {
@@ -23,6 +23,7 @@
     font-size: 18px;
     display: flex;
     flex-direction: column;
+    text-align: left;
     justify-content: space-evenly;
 }
 

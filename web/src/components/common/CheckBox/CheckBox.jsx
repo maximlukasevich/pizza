@@ -14,6 +14,7 @@ const CheckBox = (props) => {
         className={styles.input}
         type="checkbox"
         value={props.value}
+        onChange={e => props.setValue(e.target.checked)}
         id={componentId}
       />
       <label

@@ -2,8 +2,12 @@ import React from 'react';
 
 import styles from './cart-button.module.css';
 import { ShoppingOutlined } from '@ant-design/icons';
+import {useSelector} from "react-redux";
 
 const CartButton = () => {
+
+  const totalPrice = useSelector(state => state.cart.totalPrice);
+  const totalCount = useSelector(state => state.cart.totalCount);
 
   return (
     <div className={styles.cartWrapper}>
@@ -14,10 +18,10 @@ const CartButton = () => {
         </div>
 
         <div className={styles.price}>
-          529 грн
+          {totalPrice} грн.
         </div>
       </div>
-      <p className={styles.count} >Кількість товарів: 4</p>
+      <p className={styles.count} >Кількість товарів: {totalCount}</p>
     </div>
 
   );

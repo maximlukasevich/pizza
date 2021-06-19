@@ -18,7 +18,11 @@
 
 .title {
     font-size: 20px;
+    color: #000000;
     overflow-wrap: break-word;
+}
+.title:hover {
+    cursor: pointer;
 }
 
 .body {
