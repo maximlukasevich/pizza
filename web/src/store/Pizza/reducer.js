@@ -23,12 +23,12 @@ export const pizzaReducer = (state = initialState, action) => {
   }
 }
 
-export const setOnePizza = (pizza) => ({
+export const rSetOnePizza = (pizza) => ({
   type: SET_ONE,
   pizza
 })
 
-export const setAllPizza = (pizza) => ({
+export const rSetAllPizza = (pizza) => ({
   type: SET_ALL,
   pizza
 })
