@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {auth} from './store/CurrentAdmin/action';
+import {auth} from './store/CurrentAdmin/actions';
 
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
@@ -35,13 +35,13 @@ const App = () => {
 
             <Route exact path={'/cart'} component={Cart} />
             <Route exact path={'/pizza'} component={Pizza} />
-            <Route exact path={'/pizza/:id'} component={PizzaDetail} />
+            <Route exact path={'/pizza/:slug'} component={PizzaDetail} />
             <Route exact path={'/'} render={() => <Redirect to={'/pizza'} /> }/>
 
           {isAuth && <>
             <Route exact path={'/admin/orders'} component={Orders} />
             <Route exact path={'/admin/pizza'} component={PizzaList} />
-            <Route exact path={'/admin/pizza/:id/update'} component={UpdatePizza} />
+            <Route exact path={'/admin/pizza/:slug/update'} component={UpdatePizza} />
             <Route exact path={'/admin/pizza/create'} component={CreatePizza} />
             <Route exact path={'/admin/login'} render={() => <Redirect to={'/admin/orders'}/>} />
           </>}
