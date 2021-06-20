@@ -1,4 +1,4 @@
-.tr:nth-child(odd) {
+.tr:nth-child(even) {
     background-color: #E12C3510;
 }
 

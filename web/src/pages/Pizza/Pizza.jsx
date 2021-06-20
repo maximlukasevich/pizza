@@ -5,7 +5,7 @@ import {getAllPizza} from "../../store/Pizza/actions";
 import styles from './pizza.module.css';
 import PizzaCard from './components/PizzaCard/PizzaCard';
 import Header from '../../components/Header/Header';
-//import PopularPizza from '../../components/PopularPizza/PopularPizza';
+import PopularPizza from '../../components/PopularPizza/PopularPizza';
 
 const Pizza = ({pizza}) => {
 
@@ -29,10 +29,10 @@ const Pizza = ({pizza}) => {
       <Header />
       <div>
         <div className={styles.block}>
-          {/*<PopularPizza />*/}
+          <PopularPizza />
         </div>
         <div className={styles.block}>
-          <h2 className={styles.title}>Вся піца</h2>
+          <h1 className={styles.title}>Вся піца</h1>
           {/*<HR />*/}
           <div className={styles.pizza}>
             {renderPizza}

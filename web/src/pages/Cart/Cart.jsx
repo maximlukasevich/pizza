@@ -39,7 +39,7 @@ const Cart = ({cart, customer}) => {
         count={item.count}
         price={item.price}
         key={i}
-      /> : ' '
+      /> : false
   );
 
   return (

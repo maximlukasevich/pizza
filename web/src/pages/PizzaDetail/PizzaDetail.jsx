@@ -6,6 +6,7 @@ import styles from './pizza-detail.module.css';
 import PizzaCounter from "../../components/PizzaCounter/PizzaCounter";
 import {connect, useDispatch} from "react-redux";
 import {getOnePizza} from "../../store/Pizza/actions";
+import PopularPizza from "../../components/PopularPizza/PopularPizza";
 
 
 const PizzaDetail = ({pizza}) => {
@@ -44,7 +45,7 @@ const PizzaDetail = ({pizza}) => {
           </div>
         </div>
       </div>
-
+      <PopularPizza />
     </div>
   );
 };
