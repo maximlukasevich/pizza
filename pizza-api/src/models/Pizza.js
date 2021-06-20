@@ -31,7 +31,7 @@ const PizzaSchema = new mongoose.Schema({
       require: true
     },
     price: {
-      type: String,
+      type: Number,
       require: true
     }
   }],
@@ -46,6 +46,10 @@ const PizzaSchema = new mongoose.Schema({
   inStock: {
     type: Boolean,
     default: false,
+  },
+  orderedTimes: {
+    type: Number,
+    default: 0
   }
 });
 
