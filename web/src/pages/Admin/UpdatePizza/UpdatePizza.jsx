@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {connect, useDispatch} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import {getOnePizza} from '../../../store/Pizza/actions';
@@ -12,40 +12,35 @@ import Button from '../../../components/common/Button/Button';
 
 const UpdatePizza = ({pizza}) => {
 
-  const [name, setName] = useState(pizza.name);
-  const [ingredients, setIngredients] = useState(pizza.ingredients);
-  const [description, setDescription] = useState(pizza.description);
-  const [inStock, setInStock] = useState(pizza.inStock);
-  const [sizes, setSizes] = useState({sizes: pizza.sizes});
-
   const { slug } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getOnePizza(slug));
-  }, []);
+  }, [dispatch, slug]);
 
-  const sizesMap = sizes.sizes !== undefined ? sizes.sizes.map((item, i) =>
+  const sizesMap = pizza.sizes !== undefined ? pizza.sizes.map((item, i) =>
     <div className={styles.sizesWrapper}>
       <div className={styles.sizes}>
         <Input
           placeholder={'Розмір'}
           value={item.size}
-          setValue={setSizes} />
+           />
         :
         <Input
           placeholder={'Ціна'}
           value={item.price}
-          setValue={setSizes} />
+           />
       </div>
       <CheckBox
         label={'В наявності?'}
         checked={item.inStock}
-        setValue={setSizes} />
+         />
     </div>
   ) : '';
 
 
   return (
+
     <div className={styles.updatePizza}>
 
       <div className={styles.form}>
@@ -56,25 +51,25 @@ const UpdatePizza = ({pizza}) => {
         <Input
           placeholder={'Назва'}
           label={'Назва'}
-          value={name}
-          setValue={setName} />
+          value={pizza.name}
+          setValue={pizza.name} />
 
         <TextArea
           placeholder={'Інгредієнти (через кому)'}
           label={'Інгредієнти'}
-          value={ingredients}
-          setValue={setIngredients} />
+          value={pizza.ingredients}
+          setValue={pizza.ingredients} />
 
         <TextArea
           placeholder={'Опис'}
           label={'Опис'}
-          value={description}
-          setValue={setDescription} />
+          value={pizza.description}
+          setValue={pizza.description} />
 
         <CheckBox
           label={'Показувати на сайті?'}
-          checked={inStock}
-          onChange={setInStock} />
+          checked={pizza.inStock}
+          onChange={pizza.inStock} />
 
         <Button className={styles.button} title={'Зберегти'}/>
 
@@ -93,7 +88,7 @@ const UpdatePizza = ({pizza}) => {
 
       </div>
 
-      <img className={styles.img} src={pizza.image} alt={name}/>
+      <img className={styles.img} src={pizza.image} alt={pizza.name}/>
 
     </div>
   );

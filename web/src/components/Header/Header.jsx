@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './header.module.css';
-import Search from '../common/Search/Search';
+import Search from '../Search/Search';
 
 const Header = (props) => {
   return (

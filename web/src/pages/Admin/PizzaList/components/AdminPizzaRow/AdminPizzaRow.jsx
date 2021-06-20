@@ -3,14 +3,14 @@ import styles from './admin-pizza-row.module.css';
 import Button from '../../../../../components/common/Button/Button';
 import {useDispatch} from 'react-redux';
 import {deletePizza} from '../../../../../store/Pizza/actions';
-import {NavLink, Redirect} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const AdminPizzaRow = (props) => {
 
   const dispatch = useDispatch();
 
   const sizesRender = props.sizes.map((item, i) =>
-    <tr className={styles.sizes}>
+    <tr key={i} className={styles.sizes}>
       <td>{item.size}</td>
       <td>{item.price}</td>
       <td>{item.inStock ? 'Так' : 'Ні'}</td>
@@ -26,12 +26,16 @@ const AdminPizzaRow = (props) => {
       </td>
       <td>
         <table className={styles.sizesTable}>
-          <tr className={styles.sizes}>
-            <th>Розмір</th>
-            <th>Ціна</th>
-            <th>В продажі</th>
-          </tr>
-          {sizesRender}
+          <thead>
+            <tr className={styles.sizes}>
+              <th>Розмір</th>
+              <th>Ціна</th>
+              <th>В продажі</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sizesRender}
+          </tbody>
         </table>
       </td>
       <td>
@@ -41,7 +45,10 @@ const AdminPizzaRow = (props) => {
         {props.inStock ? 'Так' : 'Ні'}
       </td>
       <td className={styles.actions}>
-        <Button onClick={() => dispatch(deletePizza(props.slug))} title={'Видалити'}/>
+        <Button
+          className={styles.button}
+          onClick={() => dispatch(deletePizza(props.slug))}
+          title={'Видалити'}/>
         <NavLink to={`/admin/pizza/${props.slug}/update`} className={styles.button}>
           Редагувати
         </NavLink>

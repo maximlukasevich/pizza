@@ -4,7 +4,6 @@ import Header from '../../components/Header/Header';
 import HR from '../../components/common/HR/HR';
 import styles from './pizza-detail.module.css';
 import PizzaCounter from "../../components/PizzaCounter/PizzaCounter";
-import PopularPizza from "../../components/PopularPizza/PopularPizza";
 import {connect, useDispatch} from "react-redux";
 import {getOnePizza} from "../../store/Pizza/actions";
 
@@ -14,11 +13,11 @@ const PizzaDetail = ({pizza}) => {
   const { slug } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getOnePizza(slug))
-  }, []);
+    dispatch(getOnePizza(slug));
+  }, [dispatch, slug]);
 
   const ingredientsMap = pizza.ingredients !== undefined ? pizza.ingredients.map((item, i) =>
-    <li className={styles.li}>{item}</li>
+    <li key={i} className={styles.li}>{item}</li>
   ) : '';
 
   return (
@@ -45,9 +44,6 @@ const PizzaDetail = ({pizza}) => {
           </div>
         </div>
       </div>
-
-      <HR />
-      <PopularPizza className={styles.popular} />
 
     </div>
   );

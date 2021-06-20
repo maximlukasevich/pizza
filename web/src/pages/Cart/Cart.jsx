@@ -48,14 +48,18 @@ const Cart = ({cart, customer}) => {
           {cart.totalPrice > 0 ?
             <>
             <table className={styles.table}>
-              <tr>
-                <th className={styles.tableTitle}>Піца</th>
-                <th className={styles.tableTitle}>Ціна за одиницю.</th>
-                <th className={styles.tableTitle}>Кількість</th>
-                <th className={styles.tableTitle}>Вартість</th>
-                <th className={styles.tableTitle}>Дії</th>
-              </tr>
-              {rowRender}
+              <thead>
+                <tr>
+                  <th className={styles.tableTitle}>Піца</th>
+                  <th className={styles.tableTitle}>Ціна за одиницю.</th>
+                  <th className={styles.tableTitle}>Кількість</th>
+                  <th className={styles.tableTitle}>Вартість</th>
+                  <th className={styles.tableTitle}>Дії</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rowRender}
+              </tbody>
             </table>
             </> : <p className={styles.empty}>Товарів немає <FrownOutlined className={styles.icon} /></p>}
 

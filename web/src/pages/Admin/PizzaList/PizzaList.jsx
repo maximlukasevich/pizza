@@ -12,7 +12,7 @@ const PizzaList = ({pizza}) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPizza());
-  }, [])
+  }, [dispatch])
 
   const pizzaMap = pizza.map((item, i) =>
     <AdminPizzaRow
@@ -31,17 +31,19 @@ const PizzaList = ({pizza}) => {
       <NavLink to={'/admin/pizza/create'}><Button title={'Додати піцу'} onClick={e => e}/></NavLink>
 
       <table className={styles.table}>
-        <tr>
-          <th className={styles.tableTitle}>Картинка</th>
-          <th className={styles.tableTitle}>Назва</th>
-          <th className={styles.tableTitle}>Варіанти</th>
-          <th className={styles.tableTitle}>Кількість продаж</th>
-          <th className={styles.tableTitle}>В продажі</th>
-          <th className={styles.tableTitle}>Дії</th>
-        </tr>
-
-        {pizzaMap}
-
+        <thead>
+          <tr>
+            <th className={styles.tableTitle}>Картинка</th>
+            <th className={styles.tableTitle}>Назва</th>
+            <th className={styles.tableTitle}>Варіанти</th>
+            <th className={styles.tableTitle}>Кількість продаж</th>
+            <th className={styles.tableTitle}>В продажі</th>
+            <th className={styles.tableTitle}>Дії</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pizzaMap}
+        </tbody>
       </table>
     </div>
   );

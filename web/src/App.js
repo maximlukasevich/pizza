@@ -23,34 +23,31 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(auth());
-  }, []);
+  }, [dispatch]);
 
   return (
+
     <div className='container'>
       <Navigation isAuth={isAuth} />
       <div className='content'>
         <div className='contentBody'>
-
           <Switch>
-
             <Route exact path={'/cart'} component={Cart} />
             <Route exact path={'/pizza'} component={Pizza} />
             <Route exact path={'/pizza/:slug'} component={PizzaDetail} />
             <Route exact path={'/'} render={() => <Redirect to={'/pizza'} /> }/>
 
-          {isAuth && <>
-            <Route exact path={'/admin/orders'} component={Orders} />
-            <Route exact path={'/admin/pizza'} component={PizzaList} />
-            <Route exact path={'/admin/pizza/:slug/update'} component={UpdatePizza} />
-            <Route exact path={'/admin/pizza/create'} component={CreatePizza} />
-            <Route exact path={'/admin/login'} render={() => <Redirect to={'/admin/orders'}/>} />
-          </>}
-          {!isAuth && <Route exact path={'/admin/login'} component={Auth} />}
+            {isAuth ?
+              <Switch>
+                <Route exact path={'/admin/orders'} component={Orders} />
+                <Route exact path={'/admin/pizza'} component={PizzaList} />
+                <Route exact path={'/admin/pizza/:slug/update'} component={UpdatePizza} />
+                <Route exact path={'/admin/pizza/create'} component={CreatePizza} />
+                <Route exact path={'/login'} render={() => <Redirect to={'/admin/orders'}/>} />
+              </Switch> : <Route exact path={'/login'} component={Auth} />}
 
             <Route path={'*'} component={Page404} />
-
           </Switch>
-
         </div>
       </div>
     </div>

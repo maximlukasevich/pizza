@@ -5,15 +5,14 @@ import {getAllPizza} from "../../store/Pizza/actions";
 import styles from './pizza.module.css';
 import PizzaCard from './components/PizzaCard/PizzaCard';
 import Header from '../../components/Header/Header';
-import HR from '../../components/common/HR/HR';
-import PopularPizza from '../../components/PopularPizza/PopularPizza';
+//import PopularPizza from '../../components/PopularPizza/PopularPizza';
 
 const Pizza = ({pizza}) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPizza());
-  }, []);
+  }, [dispatch]);
 
   const renderPizza = pizza.map((item, i) =>
     item.inStock ?

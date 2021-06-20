@@ -8,6 +8,7 @@ import {PlusOutlined} from '@ant-design/icons';
 import TextArea from '../../../components/common/TextArea/TextArea';
 import CheckBox from '../../../components/common/CheckBox/CheckBox';
 import Button from '../../../components/common/Button/Button';
+import {NavLink} from "react-router-dom";
 
 
 const CreatePizza = () => {
@@ -46,6 +47,14 @@ const CreatePizza = () => {
   setPrice('');
 }
 
+  const sizesRender = sizes.sizes.map((item, i) =>
+      <tr className={styles.tr}>
+        <td>{item.size}</td>
+        <td>{item.price}</td>
+        <td>{item.inStock ? 'Так' : 'Ні'}</td>
+      </tr>
+    );
+
   return (
 
     <div className={styles.createPizza}>
@@ -69,7 +78,9 @@ const CreatePizza = () => {
 
         <CheckBox label={'Показувати на сайті?'} value={inStock} setValue={setInStock} />
 
-        <Button className={styles.button} title={'Додати'} onClick={() => createPizzaHandler()} />
+        <NavLink to={'/admin/pizza/create'}>
+          <Button className={styles.button} title={'Додати'} onClick={() => createPizzaHandler()} />
+        </NavLink>
 
       </div>
 
@@ -100,18 +111,16 @@ const CreatePizza = () => {
         </div>
 
         <table className={styles.table} >
-          <tr>
-            <th className={styles.tableTitle}>Розмір</th>
-            <th className={styles.tableTitle}>Ціна</th>
-            <th className={styles.tableTitle}>В наявності</th>
-          </tr>
-        {sizes.sizes.map((item, i) =>
-          <tr className={styles.tr}>
-            <td>{item.size}</td>
-            <td>{item.price}</td>
-            <td>{item.inStock ? 'Так' : 'Ні'}</td>
-          </tr>
-        )}
+          <thead>
+            <tr>
+              <th className={styles.tableTitle}>Розмір</th>
+              <th className={styles.tableTitle}>Ціна</th>
+              <th className={styles.tableTitle}>В наявності</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sizesRender}
+          </tbody>
         </table>
 
       </div>

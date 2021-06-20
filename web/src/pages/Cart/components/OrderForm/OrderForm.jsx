@@ -14,7 +14,7 @@ const OrderForm = ({customer}) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setCustomer(firstName, lastName, phone, address));
-  }, [firstName, lastName, phone, address]);
+  }, [dispatch, firstName, lastName, phone, address]);
 
   return (
     <div className={styles.orderForm}>

@@ -4,10 +4,10 @@ import {SearchOutlined} from '@ant-design/icons';
 
 const Search = () => {
   return (
-    <div className={styles.search}>
+    <div className={styles.search} onClick={() => alert('В розробці...')}>
       <input type='text' className={styles.input} placeholder='Пошук...' />
-      <button type='submit' className={styles.button}>
-        <SearchOutlined className={styles.icon}/>
+      <button type='submit' className={styles.button} >
+        <SearchOutlined className={styles.icon} />
       </button>
     </div>
   );
