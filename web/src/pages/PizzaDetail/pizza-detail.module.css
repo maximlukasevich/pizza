@@ -11,6 +11,7 @@
 
 .body {
     padding: 0 0 10px 15px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -29,6 +30,7 @@
 }
 .li {
     font-size: 14px;
+    text-transform: lowercase;
     font-weight: bolder;
     list-style: circle inside none;
     padding: 5px 5px;

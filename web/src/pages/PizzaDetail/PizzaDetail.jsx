@@ -1,43 +1,47 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import HR from '../../components/common/HR/HR';
 import styles from './pizza-detail.module.css';
-import ToCartButton from "../../components/common/ToCartButton/ToCartButton";
 import PizzaCounter from "../../components/PizzaCounter/PizzaCounter";
-import PizzaCard from "../Pizza/components/PizzaCard/PizzaCard";
 import PopularPizza from "../../components/PopularPizza/PopularPizza";
+import {connect, useDispatch} from "react-redux";
+import {getOnePizza} from "../../store/Pizza/actions";
 
 
-const PizzaDetail = () => {
+const PizzaDetail = ({pizza}) => {
+
+  const { slug } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getOnePizza(slug))
+  }, []);
+
+  const ingredientsMap = pizza.ingredients !== undefined ? pizza.ingredients.map((item, i) =>
+    <li className={styles.li}>{item}</li>
+  ) : '';
+
   return (
     <div>
-      <Header title={'Маргарита'} />
+      <Header title={pizza.name} />
       <div className={styles.content}>
-        <img className={styles.image} src="https://tiptop-pizza.com.ua/image/cache/catalog/pizza/test1-800x800.jpg" alt=""/>
+        <img className={styles.image} src={pizza.image} alt={pizza.name} />
 
         <div className={styles.body}>
-          <h2>Маргарита</h2>
+          <h2>{pizza.name}</h2>
           <HR />
-
+          <h3>Опис</h3>
           <p className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi consectetur consequatur deserunt dicta dolorem et eum facilis in ipsa ipsum itaque nostrum quibusdam quod ratione repellendus sint suscipit voluptate.
+            {pizza.description}
           </p>
 
           <h3>Інгредієнти</h3>
           <ul className={styles.ul}>
-            <li className={styles.li}>Lorem.</li>
-            <li className={styles.li}>Loadsa.</li>
-            <li className={styles.li}>Labore.</li>
-            <li className={styles.li}>Distinctio!</li>
-            <li className={styles.li}>Distinctio!</li>
-            <li className={styles.li}>Distinctio!</li>
-            <li className={styles.li}>Distinctio!</li>
-            <li className={styles.li}>Distinctio!</li>
+            {ingredientsMap}
           </ul>
 
           <div className={styles.orderBlock}>
-            <PizzaCounter />
-            <ToCartButton />
+            <PizzaCounter sizes={pizza.sizes} />
           </div>
         </div>
       </div>
@@ -49,4 +53,8 @@ const PizzaDetail = () => {
   );
 };
 
-export default PizzaDetail;
+const mapStateToProps = (state) => ({
+  pizza: state.pizza.pizza
+});
+
+export default connect(mapStateToProps)(PizzaDetail);
