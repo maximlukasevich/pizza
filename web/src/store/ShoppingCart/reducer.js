@@ -1,6 +1,7 @@
 const ADD_TO_CART = 'ADD_TO_CART';
 const CHANGE_COUNT = 'CHANGE_COUNT';
 const DELETE_FROM_CART = 'DELETE_FROM_CART';
+const DELETE_ALL = 'DELETE_ALL';
 
 const initialState = {
   pizza: [{
@@ -84,6 +85,15 @@ export const shoppingCartReducer = (state = initialState, action) => {
         totalCount: Number(state.totalCount) - Number(deletedPizza.count)
       }
 
+    case DELETE_ALL:
+
+      return {
+        ...state,
+        pizza: [],
+        totalPrice: 0,
+        totalCount: 0
+      }
+
     default:
       return state;
   }
@@ -104,6 +114,10 @@ export const rChangeCount = (slug, price, count) => ({
 export const rDelete = (slug) => ({
   type: DELETE_FROM_CART,
   slug
-})
+});
+
+export const rDeleteAll = () => ({
+  type: DELETE_ALL
+});
 
 

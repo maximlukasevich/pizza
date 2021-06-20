@@ -1,4 +1,4 @@
-import { rAddToCart, rChangeCount, rDelete } from './reducer';
+import {rAddToCart, rChangeCount, rDelete, rDeleteAll} from './reducer';
 
 export const addToCart = (slug, name, image, size, pizzaPrice, count, price) => {
   const pizza = {
@@ -26,4 +26,12 @@ export const deleteFromCart = (slug) => {
     dispatch(rDelete(slug));
   }
 }
+
+export const deleteAll = () => {
+  return (dispatch) => {
+    dispatch(rDeleteAll());
+  }
+}
+
+
 
