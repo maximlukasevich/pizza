@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './admin-pizza-row.module.css';
 import Button from '../../../../../components/common/Button/Button';
 import {useDispatch} from "react-redux";
-import {deletePizza} from "../../../../../store/Pizza/action";
+import {deletePizza} from "../../../../../store/Pizza/actions";
 
 const AdminPizzaRow = (props) => {
 

@@ -5,7 +5,7 @@ import Radio from '../common/Radio/Radio';
 import Counter from "../Counter/Counter";
 import ToCartButton from "../common/ToCartButton/ToCartButton";
 import {useDispatch} from "react-redux";
-import {addToCart} from "../../store/ShoppingCart/action";
+import {addToCart} from "../../store/ShoppingCart/actions";
 
 const PizzaCounter = (props) => {
 

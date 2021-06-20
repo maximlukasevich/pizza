@@ -3,7 +3,7 @@ import styles from './admin-navigation.module.css';
 
 import {NavLink} from 'react-router-dom';
 import {useDispatch} from "react-redux";
-import {logOut} from "../../store/CurrentAdmin/action";
+import {logOut} from "../../store/CurrentAdmin/actions";
 
 const AdminNavigation = () => {
 

@@ -4,7 +4,7 @@ import Header from "../../../components/Header/Header";
 import Button from "../../../components/common/Button/Button";
 import AdminPizzaRow from "./components/AdminPizzaRow/AdminPizzaRow";
 import {connect, useDispatch} from "react-redux";
-import {getAllPizza} from "../../../store/Pizza/action";
+import {getAllPizza} from "../../../store/Pizza/actions";
 import {NavLink} from "react-router-dom";
 
 const PizzaList = ({pizza}) => {

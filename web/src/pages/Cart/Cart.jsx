@@ -1,5 +1,6 @@
 import React from 'react';
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
+import {deleteAll} from '../../store/ShoppingCart/actions';
 
 import styles from './cart.module.css';
 import Row from './components/Row/Row';
@@ -7,9 +8,25 @@ import OrderForm from './components/OrderForm/OrderForm';
 import HR from '../../components/common/HR/HR';
 import Logo from '../../components/Logo/Logo';
 import {FrownOutlined} from '@ant-design/icons';
+import Button from "../../components/common/Button/Button";
 
 
-const Cart = ({cart}) => {
+const Cart = ({cart, customer}) => {
+
+  const dispatch = useDispatch();
+  const buttonClickHandler = () => {
+    if (cart.totalCount < 1 || cart.totalPrice < 1) {
+      return alert('Корзина пуста');
+    }
+    if (customer.firstName === ''
+      && customer.lastName === ''
+      && customer.phone === ''
+      && customer.address === '') {
+      return alert('Заповніть всі дані для доставки');
+    }
+    dispatch(deleteAll());
+    alert('Дякуємо за замовлення!')
+  }
 
   const rowRender = cart.pizza.map((item, i) =>
     item.slug !== '' ?
@@ -33,7 +50,7 @@ const Cart = ({cart}) => {
             <table className={styles.table}>
               <tr>
                 <th className={styles.tableTitle}>Піца</th>
-                <th className={styles.tableTitle}>Ціна за шт.</th>
+                <th className={styles.tableTitle}>Ціна за одиницю.</th>
                 <th className={styles.tableTitle}>Кількість</th>
                 <th className={styles.tableTitle}>Вартість</th>
                 <th className={styles.tableTitle}>Дії</th>
@@ -61,9 +78,8 @@ const Cart = ({cart}) => {
             <p className={styles.price}>
               Сума: <span className={styles.priceSpan}>{cart.totalPrice}</span> грн.
             </p>
-            <button className={styles.button}>
-              Замовити
-            </button>
+            <Button title={'Оформити замовлення'} onClick={buttonClickHandler}/>
+
           </div>
 
         </div>
@@ -75,7 +91,8 @@ const Cart = ({cart}) => {
 };
 
 const mapStateToProps = (state) => ({
-  cart: state.cart
+  cart: state.cart,
+  customer: state.customer
 });
 
 export default connect(mapStateToProps)(Cart);

@@ -4,7 +4,7 @@ import Input from '../../../components/common/Input/Input';
 import Button from '../../../components/common/Button/Button';
 import {useDispatch} from 'react-redux';
 
-import {logIn as loginFunc} from '../../../store/CurrentAdmin/action';
+import {logIn as loginFunc} from '../../../store/CurrentAdmin/actions';
 
 const Auth = () => {
 

@@ -3,7 +3,7 @@ import styles from './row.module.css';
 import Counter from "../../../../components/Counter/Counter";
 import {DeleteOutlined} from "@ant-design/icons";
 import {useDispatch} from "react-redux";
-import {changeCount, deleteFromCart} from "../../../../store/ShoppingCart/action";
+import {changeCount, deleteFromCart} from "../../../../store/ShoppingCart/actions";
 
 const Row = (props) => {
 
@@ -27,7 +27,7 @@ const Row = (props) => {
         </div>
       </td>
       <td>
-        {props.pizzaPrice}
+        {props.pizzaPrice} грн.
       </td>
       <td>
         <Counter
@@ -38,7 +38,7 @@ const Row = (props) => {
           onChange={changeHandler} />
       </td>
       <td>
-        {props.price} грн
+        {props.price} грн.
       </td>
       <td className={styles.tdIcon} onClick={() => dispatch(deleteFromCart(props.slug))}>
         <DeleteOutlined className={styles.icon} />

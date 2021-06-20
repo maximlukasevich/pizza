@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect, useDispatch} from "react-redux";
-import {getAllPizza} from "../../store/Pizza/action";
+import {getAllPizza} from "../../store/Pizza/actions";
 
 import styles from './pizza.module.css';
 import PizzaCard from './components/PizzaCard/PizzaCard';
@@ -30,7 +30,7 @@ const Pizza = ({pizza}) => {
       <Header />
       <div>
         <div className={styles.block}>
-          <PopularPizza />
+          {/*<PopularPizza />*/}
         </div>
         <div className={styles.block}>
           <h2 className={styles.title}>Вся піца</h2>

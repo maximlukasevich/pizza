@@ -5,7 +5,7 @@ const Button = (props) => {
   return (
     <button
       className={styles.button}
-      onClick={e => props.onClick()} >
+      onClick={e => props.onClick() || ''} >
       {props.title}
     </button>
   );
