@@ -23,7 +23,7 @@ const Row = (props) => {
         <img className={styles.image} src={props.image} alt={props.name} />
         <div className={styles.pizzaName}>
           <p>{props.name}</p>
-          <p>Діаметр: {props.size}</p>
+          <p>Діаметр: {props.size} см.</p>
         </div>
       </td>
       <td>
