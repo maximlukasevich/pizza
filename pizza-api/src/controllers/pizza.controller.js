@@ -13,7 +13,8 @@ const getAllPizza = async (req, res) => {
 const getPizza = async (req, res) => {
   try {
     const {slug} = req.params;
-    return res.status(200).json(pizzaService.getPizza(slug)) || res.status(404).send('Not Found');
+    const pizza = await pizzaService.getPizza(slug);
+    return res.status(200).json(pizza);
   } catch (e) {
     console.error(e);
     return res.status(400).send('Bad Request');
