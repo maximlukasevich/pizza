@@ -8,6 +8,13 @@ const AdminPizzaRow = (props) => {
 
   const dispatch = useDispatch();
 
+  const sizesRender = props.sizes.map((item, i) =>
+    <tr className={styles.sizes}>
+      <td>{item.size}</td>
+      <td>{item.price}</td>
+      <td>{item.inStock ? 'Так' : 'Ні'}</td>
+    </tr> )
+
   return (
     <tr className={styles.tr}>
       <td>
@@ -17,17 +24,23 @@ const AdminPizzaRow = (props) => {
         {props.name}
       </td>
       <td>
-        <ul>
-          {props.sizes.map((item, i) =>
-            <li>Розмір: {item.size}, Ціна: {item.price} грн., Показується на сайті: {item.inStock ? 'Так' : 'Ні'}</li>
-          )}
-        </ul>
+        <table className={styles.sizesTable}>
+          <tr className={styles.sizes}>
+            <th>Розмір</th>
+            <th>Ціна</th>
+            <th>В продажі</th>
+          </tr>
+          {sizesRender}
+        </table>
       </td>
       <td>
         -
       </td>
+      <td>
+        {props.inStock ? 'Так' : 'Ні'}
+      </td>
       <td className={styles.actions}>
-        <Button onClick={e => dispatch(deletePizza(props.slug))} title={'Видалити'}/>
+        <Button onClick={() => dispatch(deletePizza(props.slug))} title={'Видалити'}/>
         <Button title={'Редагувати'} />
       </td>
     </tr>

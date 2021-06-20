@@ -15,5 +15,18 @@
 
 .actions {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.actions Button {
+    margin: 2px 0;
+}
+
+.sizesTable {
+    width: 100%;
+}
+
+.sizes td .sizes th {
+    display: flex;
+    justify-content: space-between;
 }

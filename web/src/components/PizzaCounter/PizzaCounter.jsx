@@ -39,12 +39,15 @@ const PizzaCounter = (props) => {
 
   // Оскільки декілька перших пропсів = undefined - додано перевірку
   const sizesRadio = props.sizes !== undefined ? props.sizes.map((item, i) =>
+    item.inStock ?
     <Radio
       name={'size'}
       label={item.size}
       value={item.price}
       setSize={setSize}
-      key={i}/>) : '' ;
+      key={i}
+    /> : '') : '';
+  
 
   return (
     <div>

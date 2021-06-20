@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Convert} from 'mongo-image-converter';
-import {useDispatch} from 'react-redux';
-import { createPizza } from '../../../store/Pizza/action';
+import { createPizza } from '../../../store/Pizza/actions';
 
 import styles from './create-pizza.module.css';
 import Input from '../../../components/common/Input/Input';
@@ -24,7 +23,9 @@ const CreatePizza = () => {
   const [price, setPrice] = useState('');
   const [sizeStock, setSizeStock] = useState(false);
 
-  const dispatch = useDispatch();
+  const createPizzaHandler = () => {
+    createPizza(image, name, ingredients, description, inStock, sizes.sizes);
+  }
 
   const convertImage = async (e) => {
     try {
@@ -68,10 +69,7 @@ const CreatePizza = () => {
 
         <CheckBox label={'Показувати на сайті?'} value={inStock} setValue={setInStock} />
 
-        <Button title={'Додати'} onClick={e => dispatch(createPizza(
-          image, name, ingredients,
-          description, inStock, sizes.sizes
-        ))} />
+        <Button className={styles.button} title={'Додати'} onClick={() => createPizzaHandler()} />
 
       </div>
 
@@ -79,7 +77,7 @@ const CreatePizza = () => {
         <div className={styles.text}>
           <p>Варіації</p>
           <p className={styles.p}
-             onClick={e => addVariantToSizes()}>Зберегти і додати новий варіант  <PlusOutlined /></p>
+             onClick={() => addVariantToSizes()}>Зберегти і додати новий варіант  <PlusOutlined /></p>
         </div>
 
         <div className={styles.sizesWrapper}>

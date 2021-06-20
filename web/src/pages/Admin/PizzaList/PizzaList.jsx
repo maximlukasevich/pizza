@@ -14,6 +14,16 @@ const PizzaList = ({pizza}) => {
     dispatch(getAllPizza());
   }, [])
 
+  const pizzaMap = pizza.map((item, i) =>
+    <AdminPizzaRow
+      image={item.image}
+      name={item.name}
+      sizes={item.sizes}
+      slug={item.slug}
+      inStock={item.inStock}
+      key={i} />
+  )
+
   return (
     <div className={styles.pizzaList}>
       <Header title={'Pizza List'} />
@@ -24,19 +34,13 @@ const PizzaList = ({pizza}) => {
         <tr>
           <th className={styles.tableTitle}>Картинка</th>
           <th className={styles.tableTitle}>Назва</th>
-          <th className={styles.tableTitle}>Розмір : Ціна : Показується на сайті</th>
+          <th className={styles.tableTitle}>Варіанти</th>
           <th className={styles.tableTitle}>Кількість продаж</th>
+          <th className={styles.tableTitle}>В продажі</th>
           <th className={styles.tableTitle}>Дії</th>
         </tr>
 
-        {pizza.map((item, i) =>
-          <AdminPizzaRow
-            image={item.image}
-            name={item.name}
-            sizes={item.sizes}
-            slug={item.slug}
-            />
-        )}
+        {pizzaMap}
 
       </table>
     </div>

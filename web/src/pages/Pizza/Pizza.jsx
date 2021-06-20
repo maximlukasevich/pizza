@@ -16,14 +16,14 @@ const Pizza = ({pizza}) => {
   }, []);
 
   const renderPizza = pizza.map((item, i) =>
-      <PizzaCard
-        image={item.image}
-        name={item.name}
-        slug={item.slug}
-        sizes={item.sizes}
-        key={i}
-      />
-    )
+    item.inStock ?
+    <PizzaCard
+      image={item.image}
+      name={item.name}
+      slug={item.slug}
+      sizes={item.sizes}
+      key={i}
+    /> : '')
 
   return (
     <div>
@@ -34,7 +34,7 @@ const Pizza = ({pizza}) => {
         </div>
         <div className={styles.block}>
           <h2 className={styles.title}>Вся піца</h2>
-          <HR />
+          {/*<HR />*/}
           <div className={styles.pizza}>
             {renderPizza}
           </div>

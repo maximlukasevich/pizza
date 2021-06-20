@@ -11,6 +11,7 @@ const CartButton = () => {
 
   return (
     <div className={styles.cartWrapper}>
+      <p className={styles.count} >Кількість товарів: {totalCount}</p>
       <div className={styles.cart}>
         <div className={styles.cardAndIcon}>
           Корзина
@@ -21,7 +22,6 @@ const CartButton = () => {
           {totalPrice} грн.
         </div>
       </div>
-      <p className={styles.count} >Кількість товарів: {totalCount}</p>
     </div>
 
   );

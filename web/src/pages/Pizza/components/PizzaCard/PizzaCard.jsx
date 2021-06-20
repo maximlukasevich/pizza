@@ -8,8 +8,8 @@ const PizzaCard = (props) => {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <img className={styles.image} src={props.image} alt={props.name} />
         <NavLink to={`/pizza/${props.slug}`}>
+          <img className={styles.image} src={props.image} alt={props.name} />
           <h1 className={styles.title}>{props.name || 'Без назви...'}</h1>
         </NavLink>
       </div>
