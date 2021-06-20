@@ -13,7 +13,6 @@ const authCheck = (req, res, next) => {
     req.adminId = decodedToken.adminId;
     next();
   } catch (e) {
-    console.error(e);
     return res.status(401).send('Auth middleware error');
   }
 }
