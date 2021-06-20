@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './admin-pizza-row.module.css';
 import Button from '../../../../../components/common/Button/Button';
-import {useDispatch} from "react-redux";
-import {deletePizza} from "../../../../../store/Pizza/actions";
+import {useDispatch} from 'react-redux';
+import {deletePizza} from '../../../../../store/Pizza/actions';
+import {NavLink, Redirect} from 'react-router-dom';
 
 const AdminPizzaRow = (props) => {
 
@@ -41,7 +42,9 @@ const AdminPizzaRow = (props) => {
       </td>
       <td className={styles.actions}>
         <Button onClick={() => dispatch(deletePizza(props.slug))} title={'Видалити'}/>
-        <Button title={'Редагувати'} />
+        <NavLink to={`/admin/pizza/${props.slug}/update`} className={styles.button}>
+          Редагувати
+        </NavLink>
       </td>
     </tr>
   );

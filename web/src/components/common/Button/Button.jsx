@@ -8,7 +8,7 @@ const Button = (props) => {
         ${styles.button}
         ${props.className}
       `}
-      onClick={e => props.onClick() || ''} >
+      onClick={() => props.onClick() }>
       {props.title}
     </button>
   );

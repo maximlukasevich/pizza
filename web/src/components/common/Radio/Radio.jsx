@@ -12,7 +12,7 @@ const Radio = (props) => {
         className={styles.input}
         name={props.name}
         type="radio"
-        onChange={e => props.setSize(props.label)}
+        onChange={() => props.setSize(props.label)}
         value={props.value}
       />
     <label
