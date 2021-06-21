@@ -3,9 +3,17 @@ import React from 'react';
 
 const Orders = () => {
   return (
-    <div>
-      orders
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <td>Клієнт</td>
+          <td>Номер телефону</td>
+          <td>Адреса</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+    </table>
   );
 };
 
