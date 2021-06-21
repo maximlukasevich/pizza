@@ -1,0 +1,14 @@
+.adminPage {
+    background-color: #FDB452;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.sideNav {
+    width: 15%;
+    height: 100vh;
+}
+
+.wrapper {
+    width: 85%;
+}

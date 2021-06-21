@@ -1,0 +1,11 @@
+.nav {
+    background-color: #383333;
+    width: 100%;
+    min-height: 50px;
+}
+
+.admin {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
