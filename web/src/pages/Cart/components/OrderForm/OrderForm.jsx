@@ -3,6 +3,7 @@ import {connect, useDispatch} from 'react-redux';
 import {setCustomer} from '../../../../store/Customer/actions';
 import styles from './order-form.module.css';
 import Input from '../../../../components/common/Input/Input';
+import TextArea from "../../../../components/common/TextArea/TextArea";
 
 const OrderForm = ({customer}) => {
 
@@ -10,6 +11,7 @@ const OrderForm = ({customer}) => {
   const [lastName, setLastName]= useState(customer.lastName || '');
   const [phone, setPhone]= useState(customer.phone || '');
   const [address, setAddress]= useState(customer.address || '');
+  const [description, setDescription]= useState('');
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,6 +44,12 @@ const OrderForm = ({customer}) => {
         setValue={setAddress}
         label={'Адреса доставки'}
         placeholder={'Адреса доставки'}
+        require />
+      <TextArea
+        value={description}
+        setValue={setDescription}
+        label={'Примітки до замовлення'}
+        placeholder={'Примітки до замовлення'}
         require />
     </div>
   );
