@@ -20,6 +20,7 @@ const PizzaList = ({pizza}) => {
       name={item.name}
       sizes={item.sizes}
       slug={item.slug}
+      orderedTimes={item.orderedTimes}
       inStock={item.inStock}
       key={i} />
   )

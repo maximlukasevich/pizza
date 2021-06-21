@@ -39,7 +39,7 @@ const AdminPizzaRow = (props) => {
         </table>
       </td>
       <td>
-        -
+        {props.orderedTimes}
       </td>
       <td>
         {props.inStock ? 'Так' : 'Ні'}
