@@ -28,12 +28,8 @@ export const auth = () => {
       }
     })
       .then(res => {
-        if (res.data.message) {
-          alert(res.data.message);
-        } else {
-          dispatch(rAuth(res.data.admin));
-          localStorage.setItem('token', res.data.token);
-        }
+        dispatch(rAuth(res.data.admin));
+        localStorage.setItem('token', res.data.token);
       })
       .catch(error => {
         localStorage.removeItem('token');

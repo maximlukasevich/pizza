@@ -9,10 +9,5 @@
 }
 
 .hr {
-  display: block;
-  height: 2px;
-  border: 0;
-  background: linear-gradient(0.25turn, #E12C35, #FDB452, #7d0408);
-  /*background-color: #E12C35;*/
   margin: 20px 15px 30px 15px;
 }
