@@ -12,6 +12,7 @@ const Radio = (props) => {
         className={styles.input}
         name={props.name}
         type="radio"
+        defaultChecked={props.checked}
         onChange={() => props.setSize(props.label)}
         value={props.value}
       />

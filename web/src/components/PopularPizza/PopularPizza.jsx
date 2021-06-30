@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from './popular-pizza.module.css';
-import PizzaCard from '../../pages/Pizza/components/PizzaCard/PizzaCard';
+import PizzaCard from '../PizzaCard/PizzaCard';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAllPizza} from '../../store/Pizza/actions';
 
