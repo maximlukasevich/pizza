@@ -3,7 +3,7 @@ import {connect, useDispatch} from "react-redux";
 import {getAllPizza} from "../../store/Pizza/actions";
 
 import styles from './pizza.module.css';
-import PizzaCard from './components/PizzaCard/PizzaCard';
+import PizzaCard from '../../components/PizzaCard/PizzaCard';
 import Header from '../../components/Header/Header';
 import PopularPizza from '../../components/PopularPizza/PopularPizza';
 

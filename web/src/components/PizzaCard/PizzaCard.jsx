@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './pizza-card.module.css';
-import PizzaCounter from '../../../../components/PizzaCounter/PizzaCounter';
+import PizzaCounter from '../PizzaCounter/PizzaCounter';
 import {NavLink} from 'react-router-dom';
 
 const PizzaCard = (props) => {
