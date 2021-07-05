@@ -9,12 +9,13 @@ import {addToCart} from "../../store/ShoppingCart/actions";
 
 const PizzaCounter = (props) => {
 
-  props.sizes.sort((a, b) => a.size - b.size)
+  console.log(props.sizes);
+  props.sizes.sort((a, b) => a.size - b.size);
 
   const [count, setCount] = useState(1);
   const [pizzaPrice, setPizzaPrice] = useState(props.sizes[0].price || 0);
   const [price, setPrice] = useState(props.sizes[0].price || 0);
-  const [size, setSize] = useState(0);
+  const [size, setSize] = useState(props.sizes[0].size || 0);
   const [inCart, setInCart] = useState(false);
 
   const dispatch = useDispatch();
@@ -39,7 +40,6 @@ const PizzaCounter = (props) => {
     setPrice(count * e.target.value);
   }
 
-  // Оскільки декілька перших пропсів = undefined - додано перевірку
   const sizesRadio = props.sizes !== undefined ? props.sizes.map((item, i) =>
     item.inStock ?
         <Radio

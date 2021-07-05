@@ -13,7 +13,7 @@ const Row = (props) => {
 
   const changeHandler = (count) => {
     const price = Number(count) * Number(props.pizzaPrice);
-    dispatch(changeCount(props.slug, price, count));
+    dispatch(changeCount(props.slug, price, count, props.size));
   }
 
   return (
@@ -40,7 +40,7 @@ const Row = (props) => {
       <td>
         {props.price} грн.
       </td>
-      <td className={styles.tdIcon} onClick={() => dispatch(deleteFromCart(props.slug))}>
+      <td className={styles.tdIcon} onClick={() => dispatch(deleteFromCart(props.slug, props.size))}>
         <DeleteOutlined className={styles.icon} />
       </td>
     </tr>

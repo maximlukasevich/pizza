@@ -15,15 +15,15 @@ export const addToCart = (slug, name, image, size, pizzaPrice, count, price) => 
   }
 }
 
-export const changeCount = (slug, price, count) => {
+export const changeCount = (slug, price, count, size) => {
   return (dispatch) => {
-    dispatch(rChangeCount(slug, price, count));
+    dispatch(rChangeCount(slug, price, count, size));
   }
 }
 
-export const deleteFromCart = (slug) => {
+export const deleteFromCart = (slug, size) => {
   return (dispatch) => {
-    dispatch(rDelete(slug));
+    dispatch(rDelete(slug, size));
   }
 }
 

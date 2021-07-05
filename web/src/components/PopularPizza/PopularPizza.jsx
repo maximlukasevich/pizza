@@ -27,7 +27,6 @@ const PopularPizza = (props) => {
         key={i}
       /> : '');
 
-
   return (
     <div className={props.className}>
       <h1 className={styles.title}>Найчастіше замовляють:</h1>

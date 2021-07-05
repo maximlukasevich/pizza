@@ -4,15 +4,7 @@ const DELETE_FROM_CART = 'DELETE_FROM_CART';
 const DELETE_ALL = 'DELETE_ALL';
 
 const initialState = {
-  pizza: [{
-      slug: '',
-      name: '',
-      image: '',
-      size: '',
-      pizzaPrice: 0,
-      count: 0,
-      price: 0,
-  }],
+  pizza: [],
   totalPrice: 0,
   totalCount: 0
 }
@@ -50,7 +42,7 @@ export const shoppingCartReducer = (state = initialState, action) => {
 
     case CHANGE_COUNT:
 
-      index = state.pizza.findIndex((item, i) => item.slug === action.slug);
+      index = state.pizza.findIndex((item, i) => item.slug === action.slug && item.size === action.size);
 
       if (index === -1 || action.price < 0 || action.count < 1) {
         return {
@@ -76,11 +68,13 @@ export const shoppingCartReducer = (state = initialState, action) => {
 
     case DELETE_FROM_CART:
 
-      let deletedPizza = state.pizza.find(item => item.slug === action.slug);
+      let deletedPizza = state.pizza.find(item => item.slug === action.slug && item.size === action.size);
+
+      console.log(state.pizza.filter(item => item.slug !== action.slug && item.size !== action.size));
 
       return {
         ...state,
-        pizza: [...state.pizza.filter(item => item.slug !== action.slug)],
+        pizza: state.pizza.filter(item => !(item.slug === action.slug && item.size === action.size)),
         totalPrice: Number(state.totalPrice) - Number(deletedPizza.price),
         totalCount: Number(state.totalCount) - Number(deletedPizza.count)
       }
@@ -104,16 +98,18 @@ export const rAddToCart = (pizza) => ({
   pizza
 });
 
-export const rChangeCount = (slug, price, count) => ({
+export const rChangeCount = (slug, price, count, size) => ({
   type: CHANGE_COUNT,
   slug,
   price,
-  count
+  count,
+  size
 });
 
-export const rDelete = (slug) => ({
+export const rDelete = (slug, size) => ({
   type: DELETE_FROM_CART,
-  slug
+  slug,
+  size
 });
 
 export const rDeleteAll = () => ({
